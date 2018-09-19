@@ -5,9 +5,11 @@
 
 2. Run
 
-docker run --rm -it \
-    -v ~/.ssh/id_rsa:/root/.ssh/id_rsa \
-    -v ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub \
-    -v ~/.kube:/.kube \
-    -v $(pwd):/ansible/playbooks \
-    sfgroups/docker-ansible:0.1 site.yaml
+```bash
+    docker run --rm -it \
+        -v ~/.ssh/id_rsa:/root/.ssh/id_rsa \
+        -v ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub \
+        -v ~/.kube:/.kube \
+        -v $(pwd):/ansible/playbooks \
+        sfgroups/docker-ansible:0.1 site.yaml
+```
