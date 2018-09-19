@@ -79,9 +79,12 @@ VOLUME [ "/sys/fs/cgroup", "/run" ]
 
 ENV ANSIBLE_HOST_KEY_CHECKING false
 
+RUN mkdir -p /ansible/playbooks
+WORKDIR /ansible/playbooks
+COPY requirements.txt requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt && pip install openshift
 
-#ENTRYPOINT ["ansible-playbook"]
+ENTRYPOINT ["ansible-playbook"]
+CMD [ "site.yaml" ]
 
-
-# default command: display Ansible version
-CMD [ "ansible-playbook", "--version" ]
